@@ -1,19 +1,30 @@
 import pprint
 
-students = { 'ab1' : {'name' : 'name1', 'class' : 5, 'marks' : 400},
-             'ab2' : {'name' : 'name2', 'class' : 5, 'marks' : 433},
-             'ab3' : {'name' : 'name3', 'class' : 5, 'marks' : 324},
-             'ab4' : {'name' : 'name4', 'class' : 6, 'marks' : 233},
-             'ab5' : {'name' : 'name5', 'class' : 7, 'marks' : 143},
-             'ab6' : {'name' : 'name6', 'class' : 6, 'marks' : 656},
-             'ab7' : {'name' : 'name7', 'class' : 7, 'marks' : 435}
-            }
+students = {
+    "ab1": {"name": "name1", "class": 5, "marks": 400},
+    "ab2": {"name": "name2", "class": 5, "marks": 433},
+    "ab3": {"name": "name3", "class": 5, "marks": 324},
+    "ab4": {"name": "name4", "class": 6, "marks": 233},
+    "ab5": {"name": "name5", "class": 7, "marks": 143},
+    "ab6": {"name": "name6", "class": 6, "marks": 656},
+    "ab7": {"name": "name7", "class": 7, "marks": 435},
+}
 
-p_students = {id: 'Pass' + ', marks : ' + str(record['marks']) +
-             ', class : ' + str(record['class']) +'.'
-             if record['marks'] > 250 else 'Fail'
-             for id, record in students.items() if record['class'] < 8}
-pprint.pprint(p_students)
+# p_students = {
+#     id: (
+#         "Pass"
+#         + ", marks : "
+#         + str(record["marks"])
+#         + ", class : "
+#         + str(record["class"])
+#         + "."
+#         if record["marks"] > 250
+#         else "Fail"
+#     )
+#     for id, record in students.items()
+#     if record["class"] < 8
+# }
+# pprint.pprint(p_students)
 
 ##print('\nGrouped by mark\n')
 ##grouped = {
@@ -23,16 +34,14 @@ pprint.pprint(p_students)
 
 grouped_by_mark = {
     markgroup: {
-        id : stu
+        id: stu
         for id, stu in students.items()
-        if (stu['marks'] >= markgroup and stu['marks'] < (markgroup + 100))
-        
-        }
-    for markgroup in set((stu['marks']//100)*100 for stu in students.values())
-    } 
+        if (stu["marks"] >= markgroup and stu["marks"] < (markgroup + 100))
+    }
+    for markgroup in set((stu["marks"] // 100) * 100 for stu in students.values())
+}
 
 pprint.pprint(grouped_by_mark)
-
 
 
 ##L = [2, 5, 6, 7, -9, -3, -7]
@@ -62,7 +71,6 @@ pprint.pprint(grouped_by_mark)
 ##L = [1, 2, 3, 4, 5, -1, -3, -4, 5]
 ##L2 = [n  for n in L if n>0 else 0]
 ##print(L2)
-
 
 
 ##students = {
@@ -106,7 +114,6 @@ pprint.pprint(grouped_by_mark)
 ##print (L2)
 
 
-
 ##L = [[1, 2, 3, 4], [5, 6, 7, 8, 9], [11, 12, 13, 14]]
 ##
 ####sumL = [ if i != 0 subL[i] + subL[i-1] else subL[0] for subL in L for i in len(subL)-1]
@@ -124,7 +131,6 @@ pprint.pprint(grouped_by_mark)
 ##L = [['a', 'b', 'c'], ['d', 'e', 'f'], ['d', 'h', 'i']]
 ##sum_L = [ ch for ll in L for ch in ll]
 ##print(sum_L)
-
 
 
 ##
@@ -169,7 +175,6 @@ pprint.pprint(grouped_by_mark)
 ##    print(name, price)
 
 
-
 ##numbers = [2, 1, 4, 1, 2, 5, 8, 6, 7]
 ##for number in sorted((numbers), reverse = False):
 ##    print(number)
@@ -195,7 +200,7 @@ pprint.pprint(grouped_by_mark)
 ##
 ##for number in numbers:
 ##    print(number, end = ' ')
-##    
+##
 ##print('\nsorted : ' + str(list(sorted(numbers))))
 ##print('\nreversed: ' + str(list(reversed(numbers))))
 ##
@@ -209,7 +214,7 @@ pprint.pprint(grouped_by_mark)
 ##    i += 1
 ####    if(i > 55):
 ####        break
-##    
+##
 ##else:
 ##    print('break naturally')
 
@@ -283,13 +288,10 @@ pprint.pprint(grouped_by_mark)
 ##    print(student)
 
 
-
-
 ##x, y = 0, 1
 ##for i in range(1000):
 ##    print(f'{x}')
 ##    x, y = y, x+y
-
 
 
 ##import sys
@@ -298,7 +300,7 @@ pprint.pprint(grouped_by_mark)
 ##
 ##def count_words(files):
 ##    word_count = defaultdict(int)
-##    
+##
 ##    for file in files:
 ##        try:
 ##            with open(file, 'r', encoding='utf-8') as f:
@@ -310,19 +312,19 @@ pprint.pprint(grouped_by_mark)
 ##            print(f"Error: File '{file}' not found.")
 ##        except Exception as e:
 ##            print(f"Error reading '{file}': {e}")
-##    
+##
 ##    return word_count
 ##
 ##if __name__ == "__main__":
 ##    if len(sys.argv) < 2:
 ##        print("Usage: python <script.py> <file1> <file2> ... <fileN>")
 ##        sys.exit(1)
-##    
+##
 ##    start_time = time.time()
 ##    files = sys.argv[1:]
 ##    word_counts = count_words(files)
 ##    end_time = time.time()
-##    
+##
 ##    print(word_counts)
 ##    print(f"Execution time: {end_time - start_time:.4f} seconds")
 
@@ -336,7 +338,7 @@ pprint.pprint(grouped_by_mark)
 ##total = 0
 ##for i in range(5, 20, 2):
 ##    total += i*i
-##    print(i, ' > ', i*i) 
+##    print(i, ' > ', i*i)
 ##print(f'the sum of all square {total}')
 ##
 
@@ -412,11 +414,11 @@ pprint.pprint(grouped_by_mark)
 ##cards = FrenchDeck()
 ##print(cards.__len__())
 ##
-##i = 0 
+##i = 0
 ##for card in cards:
 ##    i += 1
 ##    print(f"{i} : {card.suit} → {card.rank}")
-    
+
 ##for i in range(1, 6):
 ##        print((' ' * (int((6-i)/2))) + '*' * i)
 
@@ -424,13 +426,11 @@ pprint.pprint(grouped_by_mark)
 ##    print(i, ' -> ', i * i, end = '\n')
 
 
-
 ##L = [('name 1', 20), ('name 2', 21), ('name 3', 22), ('name 4', 23)]
 ##D = dict(L)
 ##
 ##for key, value in D.items():
 ##    print(key, value)
-
 
 
 ##L = [('name 1', 20), ('name 2', 21), ('name 3', 22), ('name 4', 23)]
@@ -466,7 +466,6 @@ pprint.pprint(grouped_by_mark)
 ##    print(f'Price of {friut} is {price}')
 
 
-
 ##fruit_price = {
 ##    'apple' : 210,
 ##    'banana' : 700
@@ -483,16 +482,12 @@ pprint.pprint(grouped_by_mark)
 ##print(fruit_price)
 
 
-
-
 ##name = input('Enter a title: ')
 ##
 ##if not name.istitle():
 ##    print('wrong input')
 ##else:
 ##    print(name)
-
-
 
 
 ##l = [1, 2, 3, 2, 4, 3, 2, 5, 2]
