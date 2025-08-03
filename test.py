@@ -9,11 +9,11 @@ students = { 'ab1' : {'name' : 'name1', 'class' : 5, 'marks' : 400},
              'ab7' : {'name' : 'name7', 'class' : 7, 'marks' : 435}
             }
 
-##p_students = {id: 'Pass' + ', marks : ' + str(record['marks']) +
-##              ', class : ' + str(record['class']) +'.'
-##              if record['marks'] > 250 else 'Fail'
-##              for id, record in students.items() if record['class'] < 8}
-##pprint.pprint(p_students)
+p_students = {id: 'Pass' + ', marks : ' + str(record['marks']) +
+             ', class : ' + str(record['class']) +'.'
+             if record['marks'] > 250 else 'Fail'
+             for id, record in students.items() if record['class'] < 8}
+pprint.pprint(p_students)
 
 ##print('\nGrouped by mark\n')
 ##grouped = {
