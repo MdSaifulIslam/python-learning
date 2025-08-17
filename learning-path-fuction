@@ -1,0 +1,50 @@
+1. Function Arguments
+
+Positional, keyword, default, variable-length (*args, **kwargs)
+Example: def func(a, b=2, *args, **kwargs): ...
+Return Values
+a. Using Built-in Functions (map, filter, iterable)
+b. Custom Higher-Order Function
+c. Passing Lambda Functions
+d. Callback Pattern
+
+
+2. Returning single or multiple values (tuples)
+Example: return x, y
+Scope and Lifetime
+
+3. Local vs global variables
+The global and nonlocal keywords
+
+4.Lambda Functions
+Anonymous functions for short operations
+Example: square = lambda x: x * x
+
+5. Nested Functions & Closures
+Functions defined inside other functions
+Example:
+
+def outer():    def inner():        ...    return inner
+
+6. Decorators
+Functions that modify other functions’ behavior
+Example:
+
+def my_decorator(func):    def wrapper(*args, **kwargs):        ...    return wrapper
+
+7. Function as First-Class Objects
+Passing functions as arguments, returning functions, storing in variables
+
+8. Type Hints
+Adding type annotations for better readability and tooling
+Example: def add(x: int, y: int) -> int: ...
+
+9. Docstrings
+Documenting functions for clarity and tooling
+Example:
+
+def foo():    """This function does X."""
+
+
+10. Error Handling
+Using try, except blocks inside functions
