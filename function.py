@@ -138,4 +138,125 @@ def process_data(data, call2):
     print("Processing:", data)
     call2(data)
 
-process_data("my_temp_data", lambda result : print("Lambda callback:", result))
+
+process_data("my_temp_data", lambda result: print("Lambda callback:", result))
+
+# 2 Returning single or multiple values (tuples)
+
+
+def get_list():
+    return [1, 2, 3, 4]
+
+
+def get_dict():
+    return {"x": 10, "y": 30}
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+def get_point():
+    return Point(10, 20)
+
+
+print((get_list()))
+print(get_dict())
+print(get_point())
+print(get_point().x)
+print(get_point().y)
+
+# 3. Local vs global variables
+
+x = "global"
+
+
+def outer():
+    y = "outer"
+
+    def inner():
+        global x
+        nonlocal y
+        x = "x modified by inner"
+        y = "y modified by inner"
+
+    inner()
+    print("y in outer : ", y)
+
+
+outer()
+print("x in global : ", x)
+
+# 4. Lambda Functions
+# Anonymous functions for short operations
+# Example: square = lambda x: x * x
+
+default_add = lambda x, y=10: x + y
+print(default_add(3))
+print(default_add(3, 5))
+
+
+# Lambda inside another function
+
+
+def set_multiplier(n):
+    return lambda x: x * n
+
+
+times3 = set_multiplier(3)
+print(times3(4))
+
+times9 = set_multiplier(9)
+print(times9(4))
+
+# 5. Nested Functions & Closures
+# Functions defined inside other functions
+
+
+# closue
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("Before call")
+        result = func(*args, **kwargs)
+        print("After call")
+        return result
+
+    return wrapper
+
+
+@my_decorator
+def greet(name):
+    print(f"Hello, {name}!")
+
+
+greet("Alice")
+
+
+# return inner function
+def make_adder(n):
+    def adder(x):
+        return x + n
+
+    return adder
+
+
+add5 = make_adder(5)
+print(add5(15))
+
+
+# return multiple inner function
+def math_ops(n):
+    def add(x):
+        return x + n
+
+    def mul(x):
+        return x * n
+
+    return add, mul
+
+
+add4, mul4 = math_ops(4)
+print(add4(16))
+print(mul4(16))
