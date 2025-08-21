@@ -3,6 +3,7 @@
 
 # logging
 def log_dec(func):
+    print('decoretor log_dec call whether the calling function called or not')
     def wrapper(*args, **kwargs):
         print(f"Calling {func.__name__} with {args} {kwargs}")
         result = func(*args, **kwargs)
@@ -13,6 +14,7 @@ def log_dec(func):
 import time
 
 def time_dec(func):
+    print('decoretor time_dec call whether the calling function called or not')
     def wrapper(*args, **kwargs):
         print(f"{func.__name__} ...")
         start = time.time()
