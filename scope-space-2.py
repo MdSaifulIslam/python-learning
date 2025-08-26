@@ -90,6 +90,121 @@ c.PI = 3  # instance-level attribute
 print(c.area_with_class())  # 12.56636  (still Circle.PI)
 print(c.area_with_self())  # 12        (used instance's PI)
 
+# 7) Comprehension Scope in Python
+# List Comprehension Variable Isolation
+x = 99
+squares = [x * x for x in range(9)]
+print(f" x : {x}  and squares: {squares}")  # x will remain unchanged
+
+# Dict Comprehension with External Variable
+key = "user"
+mydict = {key: value for key, value in [("id", 1), ("name", "asif")]}
+print(key)
+print(mydict)
+
+fields = ["id", "name", "age"]
+rows = [(1, "Alice", 25), (2, "Bob", 30)]
+
+json_recodes = [{field: value for field, value in zip(fields, row)} for row in rows]
+
+print(json_recodes)
+
+# important note
+# in loops, the loop varibale does leak
+for i in range(3):
+    pass
+print(i)
+
+# 8) locals(), globals(), vars(), and del in Python
+# globals()
+print("i" in globals())
+print(globals()["i"])
+
+config = {"Debug": True, "API_KEY": "123"}
+globals().update(config)
+print(Debug, API_KEY)
+
+globals().clear()
+# print(Debug, API_KEY)  # NameError: name 'Debug' is not defined
+
+
+# locals()
+def demo():
+    a = 10
+    b = 20
+    print(locals())
+
+
+demo()
+
+
+def process_order(order_id, amount):
+    print(f"Debug : {locals()}")
+
+
+process_order(42, 100.9993)
+
+# Function default values: binding time (subtle scope pitfall)
+def add_item(itam, bucket=[]):
+    bucket.append(itam)
+    return bucket
+
+print(add_item("one"))
+print(add_item("two")) # why it appending data?
+
+def add_item(itam, bucket = None):
+    if bucket is None:
+        bucket = []
+    bucket.append(itam)
+    return bucket
+print(add_item("one"))
+print(add_item("two")) 
+
+# use for database for safe Use
+def query(sql, params=None):
+    if params is None:
+        params = {}
+        # append new data
+
+# Exercise
+# memoization
+def fibo_memoized():
+    cache = {0:0, 1:1}
+    def fibo(n):
+        nonlocal cache
+        if n not in cache:
+            print("running....")
+            cache[n] = fibo(n-1) + fibo(n-2)
+        return cache[n]
+    return fibo
+
+fib = fibo_memoized()
+print(fib(10))
+print("==========")
+print(fib(3)) # it will print from cache
+
+# config
+class Config:
+    debug = False
+
+def log(msg):
+    if Config.debug:
+        print(msg)
+
+Config.debug = True
+log("Printing...")
+Config.debug = False
+log("Printing...") # won't print
+
+# safe late-binding
+clicking = []
+
+for idx in range(4):
+    def handler(i = idx):
+        print(f"Clicking {i}")
+    clicking.append(handler)
+
+print(f"{[f() for f in clicking]}")
 
 # super in python
 
